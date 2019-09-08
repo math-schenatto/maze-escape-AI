@@ -28,13 +28,13 @@ class Maze(tk.Tk, object):
 
         # Botões e labels
         ##########################################################3
-        self.title_app = tk.Label(self.canvas, text='Parâmetros', width=20, height=1)
+        self.title_app = tk.Label(self.canvas, text='Parâmetros', width=16, height=1)
         self.title_app.place(x=430,y=5)
         self.title_app.config(font=("Courier", 12))
 
         #População
         ########################################################################
-        self.title_pop = tk.Label(self.canvas, text='Tam População:')
+        self.title_pop = tk.Label(self.canvas, text='Tam População:', width=12)
         self.title_pop.place(x=430, y=50)
 
         self.input_pop = tk.Entry(self.canvas, width=10)
@@ -43,7 +43,7 @@ class Maze(tk.Tk, object):
 
         #CrossOver
         ########################################################################
-        self.title_cross = tk.Label(self.canvas, text='Crossover (%):')
+        self.title_cross = tk.Label(self.canvas, text='Crossover (%):', width=12)
         self.title_cross.place(x=430, y=73)
 
         self.input_cross = tk.Entry(self.canvas, width=10)
@@ -52,7 +52,7 @@ class Maze(tk.Tk, object):
 
         #Mutação
         ########################################################################
-        self.title_mut = tk.Label(self.canvas, text='Mutação (%):')
+        self.title_mut = tk.Label(self.canvas, text='Mutação (%):', width=12)
         self.title_mut.place(x=430, y=96)
 
         self.input_mut = tk.Entry(self.canvas, width=10)
