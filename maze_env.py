@@ -23,12 +23,47 @@ class Maze(tk.Tk, object):
 
     def _build_maze(self):
         self.canvas = tk.Canvas(self, bg='blue',
-                           height=MAZE_H * UNIT,
-                           width=MAZE_W * UNIT)
+                           height=MAZE_H * UNIT * 2,
+                           width=MAZE_W * UNIT * 2)
 
-        self.canvas_2 = tk.Canvas(self, bg='orange',
-                           height=50 * UNIT,
-                           width=50 * UNIT)
+        # Botões e labels
+        ##########################################################3
+        self.title_app = tk.Label(self.canvas, text='Parâmetros', width=20, height=1)
+        self.title_app.place(x=430,y=5)
+        self.title_app.config(font=("Courier", 12))
+
+        #População
+        ########################################################################
+        self.title_pop = tk.Label(self.canvas, text='Tam População:')
+        self.title_pop.place(x=430, y=50)
+
+        self.input_pop = tk.Entry(self.canvas, width=10)
+        self.input_pop.place(x=530, y=50)
+        ###########################################################################
+
+        #CrossOver
+        ########################################################################
+        self.title_cross = tk.Label(self.canvas, text='Crossover (%):')
+        self.title_cross.place(x=430, y=73)
+
+        self.input_cross = tk.Entry(self.canvas, width=10)
+        self.input_cross.place(x=530, y=73)
+        ###########################################################################
+
+        #Mutação
+        ########################################################################
+        self.title_mut = tk.Label(self.canvas, text='Mutação (%):')
+        self.title_mut.place(x=430, y=96)
+
+        self.input_mut = tk.Entry(self.canvas, width=10)
+        self.input_mut.place(x=530, y=96)
+        ###########################################################################
+
+        #Botao iniciar
+        ##################################################################
+        self.btn_ini = tk.Button(self.canvas, text='Iniciar', width=10)
+        self.btn_ini.place(x=430, y=122)
+        ############################################################
 
         # create grids
         for c in range(0, MAZE_W * UNIT, UNIT):
@@ -40,7 +75,7 @@ class Maze(tk.Tk, object):
 
         #Linhas externas
         self.line1 = self.canvas.create_line(3,396,396,396, width=5)
-        self.line2 = self.canvas.create_line(3, 3, 550, 3, width=5)
+        self.line2 = self.canvas.create_line(3, 3, 396, 3, width=5)
         self.line3 = self.canvas.create_line(3, 3, 3, 360, width=5)
         self.line3 = self.canvas.create_line(398, 40, 398, 398, width=5)
         self.line4 = self.canvas.create_line(20, 300, 40, 340, width=5)
