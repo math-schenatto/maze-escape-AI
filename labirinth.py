@@ -5,6 +5,8 @@ class Labyrinth:
     def __init__(self, controller):
         self.control = controller
         self.specimen = Specimen()
+        self.specimen.get_route()
+        self.specimen.score_route()
 
     def show_path_on_maze(self):
         specimen = self.specimen
