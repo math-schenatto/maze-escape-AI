@@ -66,16 +66,16 @@ class Maze(tk.Tk, object):
         #Botao iniciar
         ##################################################################
         self.btn_ini = tk.Button(self.canvas,
-                                 text='Iniciar',
-                                 width=10,
-                                 command=(lambda
-                                     text='teste':
-                                     self.control.main_show_maze(
-                                                                self.input_pop.get(),
-                                                                self.input_cross.get(),
-                                                                self.input_mut.get()
-                                    )
-                                 )
+                                     text='Iniciar',
+                                     width=10,
+                                     command=(lambda
+                                         text='teste':
+                                         self.control.main_show_maze(
+                                                                    self.input_pop.get(),
+                                                                    self.input_cross.get(),
+                                                                    self.input_mut.get()
+                                        )
+                                     )
                                  )
         self.btn_ini.place(x=430, y=122)
         ############################################################

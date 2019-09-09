@@ -1,5 +1,3 @@
-# python -i file.py
-# from file import *
 walls = {
 1: [],
 2: [12],
@@ -102,4 +100,3 @@ walls = {
 99: [89],
 100: []
 }
-
