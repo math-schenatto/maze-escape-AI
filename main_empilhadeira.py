@@ -17,7 +17,7 @@ class Labyrinth:
 
     def __init__(self, controller):
         self.control = controller
-        self.specimen = Specimen(genetic_code=self.randomCromossomo())
+        self.specimen = self.randomCromossomo()
 
     def crossOver(self):
         pass
@@ -29,9 +29,10 @@ class Labyrinth:
         pass
 
     def randomCromossomo(self, stringLength=23):
+        specimens =[]
         directions = ['00', '01', '10', '11']
-        return ''.join(random.choice(directions) for i in range(stringLength))
-
+        specimens.append(Specimen(genetic_code=''.join(random.choice(directions) for i in range(stringLength))))
+        return specimens[0]
     def move_truck(self, current,direction):
         new = current + move_value[direction]
 
@@ -58,22 +59,12 @@ class Labyrinth:
     def show_track(self):
         start = 0
         end = 2
-        #env.reset()
         for i in range(23):
             direction = self.specimen.genetic_code[start:end]
             self.specimen.current_position = self.move_truck(self.specimen.current_position,direction)
             action = maze_value[direction]
-            #env.render()
-            #env.step(action)
             self.control.move_view_truck(action)
             start += 2
             end += 2
 
-#def main(pop, cross, mut):
-#    print(pop, cross, mut)
-#    env.after(100, show_track(specimen))
 
-#if __name__ == "__main__":
-    #specimen = Specimen(genetic_code=randomCromossomo())
-    #env = Maze()
-    #env.mainloop()

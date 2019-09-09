@@ -93,7 +93,61 @@ class Maze(tk.Tk, object):
         self.line2 = self.canvas.create_line(3, 3, 396, 3, width=5)
         self.line3 = self.canvas.create_line(3, 3, 3, 360, width=5)
         self.line3 = self.canvas.create_line(398, 40, 398, 398, width=5)
-        self.line4 = self.canvas.create_line(20, 300, 40, 340, width=5)
+
+
+        #Linhas horizontais
+        self.line4 = self.canvas.create_line(40, 320, 40, 398, width=5)
+        self.line5 = self.canvas.create_line(3, 240, 80, 240, width=5)
+        self.line6 = self.canvas.create_line(3, 160, 120, 160, width=5)
+
+        self.line7 = self.canvas.create_line(40, 40, 160, 40, width=5)
+        self.line8 = self.canvas.create_line(40, 80, 200, 80, width=5)
+        self.line9 = self.canvas.create_line(40, 120, 200, 120, width=5)
+
+        self.line10 = self.canvas.create_line(40, 280, 120, 280, width=5)
+        self.line11 = self.canvas.create_line(80, 320, 160, 320, width=5)
+        self.line14 = self.canvas.create_line(80, 360, 160, 360, width=5)
+
+        self.line12 = self.canvas.create_line(40, 200, 80, 200, width=5)
+        self.line13 = self.canvas.create_line(160, 240, 360, 240, width=5)
+        self.line15 = self.canvas.create_line(160, 280, 200, 280, width=5)
+
+        self.line16 = self.canvas.create_line(240, 360, 360, 360, width=5)
+        self.line17 = self.canvas.create_line(280, 320, 360, 320, width=5)
+        self.line18 = self.canvas.create_line(320, 280, 400, 280, width=5)
+
+        self.line19 = self.canvas.create_line(200, 200, 400, 200, width=5)
+        self.line20 = self.canvas.create_line(160, 160, 320, 160, width=5)
+        self.line21 = self.canvas.create_line(320, 120, 360, 120, width=5)
+
+        self.line22 = self.canvas.create_line(320, 80, 400, 80, width=5)
+        self.line23 = self.canvas.create_line(240, 40, 320, 40, width=5)
+        self.line24 = self.canvas.create_line(240, 120, 280, 120, width=5)
+
+        #Linhas verticais
+        self.line25 = self.canvas.create_line(80, 320, 80, 360, width=5)
+        self.line26 = self.canvas.create_line(160, 320, 160, 360, width=5)
+        self.line27 = self.canvas.create_line(200, 320, 200, 400, width=5)
+
+        self.line28 = self.canvas.create_line(240, 280, 240, 360, width=5)
+        self.line29 = self.canvas.create_line(280, 240, 280, 320, width=5)
+        self.line30 = self.canvas.create_line(160, 120, 160, 200, width=5)
+
+        self.line31 = self.canvas.create_line(160, 240, 160, 280, width=5)
+        self.line32 = self.canvas.create_line(120, 200, 120, 280, width=5)
+        self.line33 = self.canvas.create_line(80, 160, 80, 200, width=5)
+
+        self.line34 = self.canvas.create_line(40, 40, 40, 80, width=5)
+        self.line35 = self.canvas.create_line(200, 3, 200, 80, width=5)
+        self.line36 = self.canvas.create_line(240, 40, 240, 120, width=5)
+
+        self.line37 = self.canvas.create_line(280, 80, 280, 120, width=5)
+        self.line38 = self.canvas.create_line(320, 40, 320, 80, width=5)
+        self.line39 = self.canvas.create_line(360, 0, 360, 40, width=5)
+
+        self.line40 = self.canvas.create_line(360, 120, 360, 200, width=5)
+        self.line41 = self.canvas.create_line(320, 120, 320, 160, width=5)
+
 
         # create origin
         origin = np.array([20, 380])
