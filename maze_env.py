@@ -1,6 +1,7 @@
 import numpy as np
 import time
 import sys
+
 if sys.version_info.major == 2:
     import Tkinter as tk
 else:
@@ -13,13 +14,16 @@ MAZE_W = 10  # grid width
 
 
 class Maze(tk.Tk, object):
-    def __init__(self):
+
+    def __init__(self, controller):
         super(Maze, self).__init__()
         self.action_space = ['u', 'd', 'l', 'r']
         self.n_actions = len(self.action_space)
         self.title('Algoritmo Genético')
         self.geometry('{0}x{1}'.format(MAZE_H * 80, MAZE_H * 40))
+        self.control = controller
         self._build_maze()
+
 
     def _build_maze(self):
         self.canvas = tk.Canvas(self, bg='blue',
@@ -61,7 +65,18 @@ class Maze(tk.Tk, object):
 
         #Botao iniciar
         ##################################################################
-        self.btn_ini = tk.Button(self.canvas, text='Iniciar', width=10)
+        self.btn_ini = tk.Button(self.canvas,
+                                 text='Iniciar',
+                                 width=10,
+                                 command=(lambda
+                                     text='teste':
+                                     self.control.main_show_maze(
+                                                                self.input_pop.get(),
+                                                                self.input_cross.get(),
+                                                                self.input_mut.get()
+                                    )
+                                 )
+                                 )
         self.btn_ini.place(x=430, y=122)
         ############################################################
 
