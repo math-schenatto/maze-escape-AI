@@ -63,6 +63,24 @@ class Maze(tk.Tk, object):
         self.input_mut.place(x=530, y=96)
         ###########################################################################
 
+        #Max generations
+        ########################################################################
+        self.title_max_generation = tk.Label(self.canvas, text='Max Geração:', width=12)
+        self.title_max_generation.place(x=430, y=120)
+
+        self.input_max_generation = tk.Entry(self.canvas, width=10)
+        self.input_max_generation.place(x=530, y=120)
+        ###########################################################################
+
+        # Elitismo
+        ########################################################################
+        self.title_elitismo = tk.Label(self.canvas, text='Elitismo(0,1)', width=12)
+        self.title_elitismo.place(x=430, y=143)
+
+        self.input_elitismo = tk.Entry(self.canvas, width=10)
+        self.input_elitismo.place(x=530, y=143)
+        ###########################################################################
+
         #Botao iniciar
         ##################################################################
         self.btn_ini = tk.Button(self.canvas,
@@ -73,11 +91,12 @@ class Maze(tk.Tk, object):
                                          self.control.main_show_maze(
                                                                     self.input_pop.get(),
                                                                     self.input_cross.get(),
-                                                                    self.input_mut.get()
+                                                                    self.input_mut.get(),
+                                                                    self.input_max_generation.get()
                                         )
                                      )
                                  )
-        self.btn_ini.place(x=430, y=122)
+        self.btn_ini.place(x=430, y=170)
         ############################################################
 
         # create grids

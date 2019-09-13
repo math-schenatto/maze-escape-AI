@@ -11,7 +11,7 @@ class Controller:
         self.env.render()
         self.env.step(action)
 
-    def main_show_maze(self, pop, cross, mut):
+    def main_show_maze(self, pop, cross, mut, max_generation):
         self.specimen = Specimen()
         self.env.reset()
         self.specimen.fitness_function()
