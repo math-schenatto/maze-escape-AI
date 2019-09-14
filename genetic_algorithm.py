@@ -1,10 +1,10 @@
 from population import Population
 from specimen import Specimen
 import random
-class Genetic:
+class GeneticAlgorithm:
     def __init__(self, solution, crossover, mutation, elitismo):
         self.solution = solution
-        self.crossover = crossover
+        self.crossover_rate = crossover
         self.mutation = mutation
         self.elitismo = elitismo
         self.current_population = None
@@ -14,21 +14,21 @@ class Genetic:
         filhos = []
 
         #pontos de corte
-        cutooff1 = random.randint((len(pais[0].genetic_code)/2)-2)+1
-        cutooff2 = random.randint((len(pais[0].genetic_code)/2)-2) + len(pais[0].genetic_code)/2
+        cutoff_1 = random.randint(0,(len(pais[0].genetic_code)/2)-2) + 1
+        cutoff_2 = (random.randint(0,(len(pais[0].genetic_code)/2)-2) + len(pais[0].genetic_code)//2)
 
         #genes dos pais
         gene_pai1 = pais[0].genetic_code
         gene_pai2 = pais[1].genetic_code
 
         #corte do gene
-        gene_filho1 = gene_pai1[0:cutooff1]
-        gene_filho1 = gene_filho1 + gene_pai2[cutooff1:cutooff2]
-        gene_filho1  = gene_filho1 + gene_pai1[cutooff2:-1]
+        gene_filho1 = gene_pai1[0:cutoff_1]
+        gene_filho1 = gene_filho1 + gene_pai2[cutoff_1:cutoff_2]
+        gene_filho1  = gene_filho1 + gene_pai1[cutoff_2:]
 
-        gene_filho2 = gene_pai2[0:cutooff1]
-        gene_filho2 = gene_filho2 + gene_pai1[cutooff1:cutooff2]
-        gene_filho2 = gene_filho2 + gene_pai2[cutooff2:-1]
+        gene_filho2 = gene_pai2[0:cutoff_1]
+        gene_filho2 = gene_filho2 + gene_pai1[cutoff_1:cutoff_2]
+        gene_filho2 = gene_filho2 + gene_pai2[cutoff_2:]
 
         filhos.append(Specimen(gene_filho1))
         filhos.append(Specimen(gene_filho2))
@@ -42,17 +42,16 @@ class Genetic:
         new_population = Population(current_population.getTamPop())
 
         if self.elitismo == True:
-            new_population.specimens.append(current_population.getSpeciemen(pos=0))
+            pass
+            # new_population.specimens.append(current_population.getSpeciemen(pos=0))
 
-        while new_population.getTamPop() < current_population.getTamPop():
+        while len(new_population.specimens) < len(current_population.specimens):
             pais = self.torneio()
 
-            if random.uniform(0,1) <= self.crossover:
+            if random.uniform(0,1) <= self.crossover_rate:
                 filhos = self.crossover(pais)
             else:
-                new_population.specimens.append(pais[0])
-                new_population.specimens.append(pais[1])
-
+                filhos = pais
 
             new_population.specimens.append(filhos[0])
             new_population.specimens.append(filhos[1])
@@ -78,6 +77,6 @@ class Genetic:
         return pais
 
 
+# Testing
 
-
-
+# GeneticAlgorithm(solution, crossover, mutation, elitismo)

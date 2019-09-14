@@ -10,7 +10,6 @@ class Population:
         for spci in range(0, self.tamPop):
             self.specimens.append(Specimen())
 
-
     def order_population(self):
         ordered_specimens = sorted(self.specimens, key=Specimen.get_fitness)
         self.specimens = ordered_specimens
@@ -35,4 +34,3 @@ if __name__ == '__main__':
 
     for ind in pop.specimens:
         print(ind.genetic_code, ind.fitness)
-
