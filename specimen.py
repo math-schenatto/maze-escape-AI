@@ -5,26 +5,44 @@ from collections import Counter
 
 class Specimen:
 
+    def __init__(self, genetic_code = None):
+        self.genetic_code = None
+        self.current_position = 91 # Default start location
+        self.route = None
+        self.fitness = None
+
+
     def random_cromossomo(self):
         directions = ['00', '01', '10', '11']
-        genetic_code=''.join(random.choice(directions) for i in range(23))
-        return genetic_code
+        genetic_code=''.join(random.choice(directions) for i in range(26))
 
-    def __init__(self, genetic_code = None):
-        self.genetic_code = genetic_code or self.random_cromossomo()
-        self.current_position = 91 # Default start location
+        self.genetic_code = genetic_code
         self.route = self.get_route()
         self.fitness = self.fitness_function()
 
-    def create_specimen(self, gene):
+
+    def create_specimen(self, gene, mut):
         self.genetic_code = gene
 
-        # if random.uniform(0,1<= GeneticAlgorithm.mutation):
-        #     random_pos = random.randrange(0,23,1)
-        #     self.genetic_code[random_pos] = random.choice(['0','1'])
+        if random.uniform(0,1)<= mut:
+            random_pos = random.randrange(0,23,1)
+            index = 0
+            new_string = ''
+
+            while index < len(self.genetic_code):
+                if index == random_pos:
+                    mutex = random.choice(['0', '1'])
+                    new_string += mutex
+                else:
+                    new_string += self.genetic_code[index]
+                index = index + 1
+
+            self.genetic_code = new_string
 
 
-        #gera aptidão
+
+        self.route = self.get_route()
+        self.fitness = self.fitness_function()
 
 
     def get_fitness(self):
@@ -36,7 +54,8 @@ class Specimen:
     def fitness_function(self):
         fitness = self.score_route()
         fitness_duplicates = self.score_duplicates()
-        total_fitness = fitness + fitness_duplicates
+        fitness_final_position = self.penalize_final_position()
+        total_fitness = fitness + fitness_duplicates + fitness_final_position
         return total_fitness
 
     def get_route(self):
@@ -59,7 +78,7 @@ class Specimen:
         fitness = 0
         for position in counter:
             if counter[position] > 1:
-                fitness += (20 * counter[position])
+                fitness += (50 * counter[position])
         return fitness
 
     def score_route(self):
@@ -79,5 +98,24 @@ class Specimen:
             elif walls.get(position) and next_position in walls.get(position):
                 fitness += 25
             else:
-                fitness += 1
+                fitness += 0
         return fitness
+
+    def penalize_final_position(self):
+        final_position = self.route[-1]
+        penalty = 0
+        # Penaliza mais quanto mais pra baixo termina
+        if final_position > 20:
+            penalty += 30
+        if final_position > 40:
+            penalty += 30
+        if final_position > 70:
+            penalty += 30
+        # Penaliza mais quanto mais pra esquerda termina
+        if final_position % 10 <= 3:
+            penalty += 30
+        if final_position % 10 <= 6:
+            penalty += 30
+        if final_position % 10 <= 8:
+            penalty += 30
+        return penalty

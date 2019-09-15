@@ -5,8 +5,16 @@ class Population:
         self.specimens = []
         self.tamPop = tamPop
 
-    #cria população com indivíduos aleatórios
+
+    # cria população com indivíduos aleatórios
     def create_random_population(self):
+        for spci in range(0,self.tamPop):
+            specimen = Specimen()
+            specimen.random_cromossomo()
+            self.specimens.append(specimen)
+
+    # cria população vazia
+    def create_none_population(self):
         for spci in range(0, self.tamPop):
             self.specimens.append(Specimen())
 

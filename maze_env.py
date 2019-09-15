@@ -92,7 +92,8 @@ class Maze(tk.Tk, object):
                                                                     self.input_pop.get(),
                                                                     self.input_cross.get(),
                                                                     self.input_mut.get(),
-                                                                    self.input_max_generation.get()
+                                                                    self.input_max_generation.get(),
+                                                                    self.input_elitismo.get()
                                         )
                                      )
                                  )
@@ -213,7 +214,7 @@ class Maze(tk.Tk, object):
 
 
     def render(self):
-        time.sleep(0.1)
+        #time.sleep()
         self.update()
 
 

@@ -2,8 +2,9 @@ from population import Population
 from specimen import Specimen
 import random
 class GeneticAlgorithm:
-    def __init__(self, solution, crossover, mutation, elitismo):
-        self.solution = solution
+    def __init__(self, crossover, mutation, elitismo):
+        self.solution = '010101000001010001101010010000000000010100000000'
+        self.solution1 = '0101010000010100011010100100000000000101000000110001'
         self.crossover_rate = crossover
         self.mutation = mutation
         self.elitismo = elitismo
@@ -30,8 +31,14 @@ class GeneticAlgorithm:
         gene_filho2 = gene_filho2 + gene_pai1[cutoff_1:cutoff_2]
         gene_filho2 = gene_filho2 + gene_pai2[cutoff_2:]
 
-        filhos.append(Specimen(gene_filho1))
-        filhos.append(Specimen(gene_filho2))
+        f1 = Specimen()
+        f1.create_specimen(gene_filho1, self.mutation)
+
+        f2 = Specimen()
+        f2.create_specimen(gene_filho2, self.mutation)
+
+        filhos.append(f1)
+        filhos.append(f2)
 
         return filhos
 
@@ -42,8 +49,8 @@ class GeneticAlgorithm:
         new_population = Population(current_population.getTamPop())
 
         if self.elitismo == True:
-            pass
-            # new_population.specimens.append(current_population.getSpeciemen(pos=0))
+            new_population.specimens.append(current_population.getSpeciemen(pos=0))
+
 
         while len(new_population.specimens) < len(current_population.specimens):
             pais = self.torneio()
@@ -63,10 +70,11 @@ class GeneticAlgorithm:
 
 
     def torneio(self):
-        pop_itermediaria = Population(3)
+        pop_itermediaria = Population(tamPop=3)
         pop_itermediaria.specimens.append(random.choice(self.current_population.specimens))
         pop_itermediaria.specimens.append(random.choice(self.current_population.specimens))
         pop_itermediaria.specimens.append(random.choice(self.current_population.specimens))
+
 
         pop_itermediaria.order_population()
 
@@ -75,6 +83,13 @@ class GeneticAlgorithm:
         pais.append(pop_itermediaria.getSpeciemen(1))
 
         return pais
+
+    def get_solution(self, gen):
+        if gen == self.solution1:
+            print('Achou o perfeito==', gen)
+            return True
+        else:
+            return False
 
 
 # Testing
