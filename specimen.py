@@ -55,8 +55,23 @@ class Specimen:
         fitness = self.score_route()
         fitness_duplicates = self.score_duplicates()
         fitness_final_position = self.penalize_final_position()
-        total_fitness = fitness + fitness_duplicates + fitness_final_position
+        cookies = self.reward_cookies()
+        total_fitness = fitness + fitness_duplicates + fitness_final_position + cookies
         return total_fitness
+
+    def reward_cookies(self):
+        reward = 0
+        if self.route[1] == 71:
+            reward -= 100
+        if self.route[7] == 44:
+            reward -= 100
+        if self.route[12] == 21:
+            reward -= 100
+        if self.route[17] == 26:
+            reward -= 100
+        if self.route[-1] == 10:
+            reward -= 100
+        return reward
 
     def get_route(self):
         current_position = self.current_position
@@ -91,11 +106,11 @@ class Specimen:
             else:
                 next_position = self.route[index+1]
             if position < 0 or position > 100:
-                fitness += 100
+                fitness += 50
             elif position % 10 == 0 and next_position % 10 == 1:
-                fitness += 100
+                fitness += 50
             elif position % 10 == 1 and next_position % 10 == 0:
-                fitness += 100
+                fitness += 50
             elif walls.get(position) and next_position in walls.get(position):
                 fitness += 50
             else:
@@ -107,19 +122,19 @@ class Specimen:
         penalty = 0
         # Penaliza mais quanto mais pra baixo termina
         if final_position > 20:
-            penalty += 10
+            penalty += 0
         if final_position > 40:
-            penalty += 10
+            penalty += 0
         if final_position > 70:
-            penalty += 10
+            penalty += 0
         # Penaliza mais quanto mais pra esquerda termina
         if final_position % 10 <= 3:
-            penalty += 20
+            penalty += 0
         if final_position % 10 <= 6:
-            penalty += 20
+            penalty += 0
         if final_position % 10 <= 8:
-            penalty += 20
-        if final_position == 10:
-            penalty -= 60
+            penalty += 0
+        if final_position % 10 == 0:
+            penalty -= 0
 
         return penalty

@@ -64,7 +64,7 @@ if __name__ == "__main__":
     population = Population(2000)
     population.create_random_population()
     generations_limit = 120
-    
+
     generation = 0
     while generation < generations_limit:
         generation += 1
@@ -73,4 +73,4 @@ if __name__ == "__main__":
         print(f"Geração {generation} | Melhor fitness {best_specimen.fitness}")
         print(best_specimen.route)
 
-    Controller()
+    # Controller()
