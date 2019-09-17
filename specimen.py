@@ -59,22 +59,6 @@ class Specimen:
         total_fitness = fitness + fitness_duplicates + reward
         return total_fitness
 
-    def reward_cookies(self):
-        reward = 0
-        if self.route[1] == 71:
-            reward -= 100
-        if self.route[7] == 44:
-            reward -= 100
-        if self.route[9] == 33:
-            reward -= 100
-        if self.route[12] == 21:
-            reward -= 100
-        if self.route[17] == 26:
-            reward -= 100
-        if self.route[-1] == 10:
-            reward -= 100
-        return reward
-
     def get_route(self):
         current_position = self.current_position
         start = 0
