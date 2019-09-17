@@ -25,7 +25,7 @@ class Specimen:
         self.genetic_code = gene
 
         if random.uniform(0,1)<= mut:
-            random_pos = random.randrange(0,23,1)
+            random_pos = random.randrange(0,26,1)
             index = 0
             new_string = ''
 
@@ -54,8 +54,9 @@ class Specimen:
     def fitness_function(self):
         fitness = self.score_route()
         fitness_duplicates = self.score_duplicates()
-        fitness_final_position = self.penalize_final_position()
-        total_fitness = fitness + fitness_duplicates + fitness_final_position
+        #fitness_final_position = self.penalize_final_position()
+        reward = self.reward_cookies()
+        total_fitness = fitness + fitness_duplicates + reward
         return total_fitness
 
     def get_route(self):
@@ -63,7 +64,8 @@ class Specimen:
         start = 0
         end = 2
         route = []
-        for i in range(23):
+        route.append(current_position)
+        for i in range(26):
             direction = self.genetic_code[start:end]
             next_position = current_position + move_value[direction]
             route.append(next_position)
@@ -78,7 +80,7 @@ class Specimen:
         fitness = 0
         for position in counter:
             if counter[position] > 1:
-                fitness += (50 * counter[position])
+                fitness += (25 * counter[position])
         return fitness
 
     def score_route(self):
@@ -90,13 +92,13 @@ class Specimen:
                 break
             next_position = self.route[index+1]
             if next_position < 0 or next_position > 100:
-                fitness += 100
+                fitness += 50
             elif position % 10 == 0 and next_position % 10 == 1:
-                fitness += 100
+                fitness += 50
             elif position % 10 == 1 and next_position % 10 == 0:
-                fitness += 100
+                fitness += 50
             elif walls.get(position) and next_position in walls.get(position):
-                fitness += 25
+                fitness += 50
             else:
                 fitness += 0
         return fitness
@@ -118,4 +120,26 @@ class Specimen:
             penalty += 30
         if final_position % 10 <= 8:
             penalty += 30
+        if final_position < 10:
+            penalty+=500
+        if final_position > 10:
+            penalty+=500
+        if final_position == 10:
+            penalty-=1000
         return penalty
+
+    def reward_cookies(self):
+        reward = 0
+        if self.route[1] == 71:
+            reward -= 100
+        if self.route[7] == 44:
+            reward -= 100
+        if self.route[9] == 33:
+            reward -= 100
+        if self.route[12] == 21:
+            reward -= 100
+        if self.route[17] == 26:
+            reward -= 100
+        if self.route[-1] == 10:
+            reward -= 100
+        return reward

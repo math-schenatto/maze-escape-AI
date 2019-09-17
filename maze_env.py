@@ -30,6 +30,11 @@ class Maze(tk.Tk, object):
                            height=MAZE_H * UNIT * 2,
                            width=MAZE_W * UNIT * 2)
 
+        #Caixa de Texto
+        ##################################################################
+        self.tex = tk.Text(master=self.canvas, height=10, width=40)
+        self.tex.place(x=430, y=200)
+
         # Botões e labels
         ##########################################################3
         self.title_app = tk.Label(self.canvas, text='Parâmetros', width=16, height=1)
@@ -182,6 +187,11 @@ class Maze(tk.Tk, object):
         # pack all
         self.canvas.pack()
 
+    def delete(self):
+        self.tex.delete('1.0', tk.END)
+    def escreve(self, conteudo):
+        self.tex.insert(tk.END, conteudo)
+
     def reset(self):
         self.update()
         time.sleep(0.30)
@@ -214,7 +224,7 @@ class Maze(tk.Tk, object):
 
 
     def render(self):
-        #time.sleep()
+        time.sleep(0.1)
         self.update()
 
 
