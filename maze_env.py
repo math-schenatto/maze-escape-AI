@@ -173,7 +173,6 @@ class Maze(tk.Tk, object):
         self.line40 = self.canvas.create_line(360, 120, 360, 200, width=5)
         self.line41 = self.canvas.create_line(320, 120, 320, 160, width=5)
 
-
         # create origin
         origin = np.array([20, 380])
 
