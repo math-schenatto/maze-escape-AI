@@ -30,6 +30,11 @@ class Maze(tk.Tk, object):
                            height=MAZE_H * UNIT * 2,
                            width=MAZE_W * UNIT * 2)
 
+        #Caixa de Texto
+        ##################################################################
+        self.tex = tk.Text(master=self.canvas, height=10, width=40)
+        self.tex.place(x=430, y=200)
+
         # Botões e labels
         ##########################################################3
         self.title_app = tk.Label(self.canvas, text='Parâmetros', width=16, height=1)
@@ -181,16 +186,10 @@ class Maze(tk.Tk, object):
         # pack all
         self.canvas.pack()
 
-        # Cookies
-        #####
-        self.img = tk.PhotoImage(file="coin.gif").subsample(5)
-        self.image = self.canvas.create_image(0, 80, anchor=tk.NW, image=self.img)
-        self.image = self.canvas.create_image(200, 80, anchor=tk.NW, image=self.img)
-        self.image = self.canvas.create_image(360, 0, anchor=tk.NW, image=self.img)
-        self.image = self.canvas.create_image(80, 120, anchor=tk.NW, image=self.img)
-        self.image = self.canvas.create_image(120, 160, anchor=tk.NW, image=self.img)
-        self.image = self.canvas.create_image(0, 280, anchor=tk.NW, image=self.img)
-        #####
+    def delete(self):
+        self.tex.delete('1.0', tk.END)
+    def escreve(self, conteudo):
+        self.tex.insert(tk.END, conteudo)
 
     def reset(self):
         self.update()
@@ -224,7 +223,7 @@ class Maze(tk.Tk, object):
 
 
     def render(self):
-        #time.sleep()
+        time.sleep(0.1)
         self.update()
 
 
