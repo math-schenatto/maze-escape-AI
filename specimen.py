@@ -65,6 +65,8 @@ class Specimen:
             reward -= 100
         if self.route[7] == 44:
             reward -= 100
+        if self.route[9] == 33:
+            reward -= 100
         if self.route[12] == 21:
             reward -= 100
         if self.route[17] == 26:

@@ -168,7 +168,6 @@ class Maze(tk.Tk, object):
         self.line40 = self.canvas.create_line(360, 120, 360, 200, width=5)
         self.line41 = self.canvas.create_line(320, 120, 320, 160, width=5)
 
-
         # create origin
         origin = np.array([20, 380])
 
@@ -181,6 +180,17 @@ class Maze(tk.Tk, object):
 
         # pack all
         self.canvas.pack()
+
+        # Cookies
+        #####
+        self.img = tk.PhotoImage(file="coin.gif").subsample(5)
+        self.image = self.canvas.create_image(0, 80, anchor=tk.NW, image=self.img)
+        self.image = self.canvas.create_image(200, 80, anchor=tk.NW, image=self.img)
+        self.image = self.canvas.create_image(360, 0, anchor=tk.NW, image=self.img)
+        self.image = self.canvas.create_image(80, 120, anchor=tk.NW, image=self.img)
+        self.image = self.canvas.create_image(120, 160, anchor=tk.NW, image=self.img)
+        self.image = self.canvas.create_image(0, 280, anchor=tk.NW, image=self.img)
+        #####
 
     def reset(self):
         self.update()
