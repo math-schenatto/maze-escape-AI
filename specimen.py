@@ -59,6 +59,22 @@ class Specimen:
         total_fitness = fitness + fitness_duplicates + reward
         return total_fitness
 
+    def reward_cookies(self):
+        reward = 0
+        if self.route[1] == 71:
+            reward -= 100
+        if self.route[7] == 44:
+            reward -= 100
+        if self.route[9] == 33:
+            reward -= 100
+        if self.route[12] == 21:
+            reward -= 100
+        if self.route[17] == 26:
+            reward -= 100
+        if self.route[-1] == 10:
+            reward -= 100
+        return reward
+
     def get_route(self):
         current_position = self.current_position
         start = 0
@@ -85,13 +101,14 @@ class Specimen:
 
     def score_route(self):
         # +100 para cada vez que sai do mapa
-        # +25 para cada parede que atravessa
+        # +50 para cada parede que atravessa
         fitness = 0
         for index, position in enumerate(self.route):
             if index == len(self.route) - 1:
-                break
-            next_position = self.route[index+1]
-            if next_position < 0 or next_position > 100:
+                next_position = self.route[-1]
+            else:
+                next_position = self.route[index+1]
+            if position < 0 or position > 100:
                 fitness += 50
             elif position % 10 == 0 and next_position % 10 == 1:
                 fitness += 50
@@ -108,16 +125,16 @@ class Specimen:
         penalty = 0
         # Penaliza mais quanto mais pra baixo termina
         if final_position > 20:
-            penalty += 30
+            penalty += 0
         if final_position > 40:
-            penalty += 30
+            penalty += 0
         if final_position > 70:
-            penalty += 30
+            penalty += 0
         # Penaliza mais quanto mais pra esquerda termina
         if final_position % 10 <= 3:
-            penalty += 30
+            penalty += 0
         if final_position % 10 <= 6:
-            penalty += 30
+            penalty += 0
         if final_position % 10 <= 8:
             penalty += 30
         if final_position < 10:

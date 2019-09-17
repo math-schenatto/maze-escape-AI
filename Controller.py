@@ -63,19 +63,10 @@ class Controller:
 
 if __name__ == "__main__":
 
-    #algorithm = GeneticAlgorithm('1', 0.6, 0.3, True)
-    #population_size = 200
-    #generations_limit = 200
-    #population = Population(population_size)
-    #opulation.create_random_population()
-    #solution_found = False
-    ##generation = 0
-    #population.order_population()
-    ##print(f"INICIAL - fitness: {population.specimens[0].fitness}")
-    #while generation < generations_limit:
-    #    generation += 1
-    #    population = algorithm.create_new_generation(population)
-    #    print(f"Geração {generation} | Melhor fitness {population.specimens[0].fitness}")
+    algorithm = GeneticAlgorithm(0.7, 0.2, 1)
+    population = Population(2000)
+    population.create_random_population()
+    generations_limit = 120
 
     controler = Controller()
     #controler.main_show_maze(5000, 8.6, 0.5, 1000, 1)
