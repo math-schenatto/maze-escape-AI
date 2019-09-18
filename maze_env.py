@@ -48,6 +48,7 @@ class Maze(tk.Tk, object):
 
         self.input_pop = tk.Entry(self.canvas, width=10)
         self.input_pop.place(x=530, y=50)
+        self.input_pop.insert(tk.END, '2000')
         ###########################################################################
 
         #CrossOver
@@ -57,6 +58,7 @@ class Maze(tk.Tk, object):
 
         self.input_cross = tk.Entry(self.canvas, width=10)
         self.input_cross.place(x=530, y=73)
+        self.input_cross.insert(tk.END, '0.7')
         ###########################################################################
 
         #Mutação
@@ -66,6 +68,7 @@ class Maze(tk.Tk, object):
 
         self.input_mut = tk.Entry(self.canvas, width=10)
         self.input_mut.place(x=530, y=96)
+        self.input_mut.insert(tk.END, '0.2')
         ###########################################################################
 
         #Max generations
@@ -75,6 +78,7 @@ class Maze(tk.Tk, object):
 
         self.input_max_generation = tk.Entry(self.canvas, width=10)
         self.input_max_generation.place(x=530, y=120)
+        self.input_max_generation.insert(tk.END, '500')
         ###########################################################################
 
         # Elitismo
@@ -84,6 +88,7 @@ class Maze(tk.Tk, object):
 
         self.input_elitismo = tk.Entry(self.canvas, width=10)
         self.input_elitismo.place(x=530, y=143)
+        self.input_elitismo.insert(tk.END, '1')
         ###########################################################################
 
         #Botao iniciar

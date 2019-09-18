@@ -3,8 +3,8 @@ from specimen import Specimen
 import random
 class GeneticAlgorithm:
     def __init__(self, crossover, mutation, elitismo):
-        self.solution = '010101000001010001101010010000000000010100000000'
-        self.solution1 = '0101010000010100011010100100000000000101000000110001'
+        self.solution = '0101010000010100011010100100000000000101000000110001'
+        self.solution2 = '0101000000010101011010100100000000000101000000110001'
         self.crossover_rate = crossover
         self.mutation = mutation
         self.elitismo = elitismo
@@ -85,7 +85,7 @@ class GeneticAlgorithm:
         return pais
 
     def get_solution(self, gen):
-        if gen == self.solution1:
+        if gen == self.solution2 or gen == self.solution:
             print('Achou o perfeito==', gen)
             return True
         else:

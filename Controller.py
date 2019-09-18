@@ -12,8 +12,8 @@ class Controller:
         self.env.mainloop()
 
     def move_view_truck(self, action):
-        self.env.render()
         self.env.step(action)
+        self.env.render()
 
     def main_show_maze(self, pop, cross, mut, max_generation, elitismo):
         # vars
@@ -47,6 +47,27 @@ class Controller:
             self.env.delete()
             self.env.escreve(conteudo)
             print(best_specimen.genetic_code, best_specimen.fitness, best_specimen.route, generation)
+
+
+        if solution == True:
+            conteudo = 'Solução ótima!!' \
+                       '\nCódigo={} ' \
+                       '\nFitness={} ' \
+                       '\nGeração={}'.format(best_specimen.genetic_code,
+                                             best_specimen.fitness, generation)
+            self.env.delete()
+            self.env.escreve(conteudo)
+            print(best_specimen.genetic_code, best_specimen.fitness, best_specimen.route, generation)
+
+            i = 0
+            while i <= 10:
+                i+=1
+                self.env.reset()
+                self.env.after(100, self.show_path_on_maze(best_specimen=best_specimen))
+
+
+
+
 
 
 
