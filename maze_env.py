@@ -194,10 +194,13 @@ class Maze(tk.Tk, object):
 
 
         # create red rect
-        self.rect = self.canvas.create_rectangle(
-            origin[0] - 10, origin[1] - 10,
-            origin[0] + 10, origin[1] + 10,
-            fill='red')
+        # self.rect = self.canvas.create_rectangle(
+        #     origin[0] - 10, origin[1] - 10,
+        #     origin[0] + 10, origin[1] + 10,
+        #     fill='red')
+        self.mario = tk.PhotoImage(file="mario.gif").subsample(2)
+        self.rect = self.canvas.create_image(0,0,anchor=tk.NW, image=self.mario)
+        self.canvas.move(self.rect, 10, 365)
 
         # pack all
         self.canvas.pack()
@@ -211,12 +214,14 @@ class Maze(tk.Tk, object):
         self.update()
         time.sleep(0.30)
         self.canvas.delete(self.rect)
-        origin = np.array([20, 380])
-        self.rect = self.canvas.create_rectangle(
-            origin[0] - 10, origin[1] - 10,
-            origin[0] + 10, origin[1] + 10,
-            fill='red')
+        # origin = np.array([20, 380])
+        # self.rect = self.canvas.create_rectangle(
+        #     origin[0] - 10, origin[1] - 10,
+        #     origin[0] + 10, origin[1] + 10,
+        #     fill='red')
         # return observation
+        self.rect = self.canvas.create_image(0,0,anchor=tk.NW, image=self.mario)
+        self.canvas.move(self.rect, 10, 365)
         return self.canvas.coords(self.rect)
 
     def step(self, action):
