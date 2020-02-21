@@ -1,3 +1,5 @@
+<h1>Algoritmo Genético</h1>
+
 <h3>Apresentação</h3>
 Trabalho de Inteligencia Artificial </br>
 
