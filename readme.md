@@ -6,7 +6,8 @@ tendo como objetivo, o agente encontrar o melhor caminho para sair do labirinto.
 O mapa é fixo com 100 posições, possui paredes onde o agente não deve pular posições separdas por elas, assim como deve respeitar as posições válidas do mapa. </br>
 
 <h4>Penalizações</h4>
-Utilizamos o conceito de <strong>Fitness</strong> para calcular a validade do melhor caminho gerada a cada geração do algoritmo, estabelecemos algumas regras.</br>
+Utilizamos o conceito de <strong>Fitness</strong> para calcular a validade do melhor caminho gerada a cada geração do algoritmo, estabelecemos algumas regras. 
+</br>
 
 <strong>O agente perde pontos toda vez que:</strong>
 1. Atravessar uma parede.
