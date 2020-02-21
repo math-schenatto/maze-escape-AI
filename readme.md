@@ -6,9 +6,9 @@ tendo como objetivo, o agente encontrar o melhor caminho para sair do labirinto.
 O mapa é fixo com 100 posições, possui paredes onde o agente não deve pular posições separdas por elas, assim como deve respeitar as posições válidas do mapa. </br>
 
 <h4>Penalizações</h4>
-Utilizamos o conceito de <strong>Fitness</strong> para calcular a validade do melhor caminho gerada a cada geração do algoritmo, estabelecemos algumas regras.
+Utilizamos o conceito de <strong>Fitness</strong> para calcular a validade do melhor caminho gerada a cada geração do algoritmo, estabelecemos algumas regras.</br>
 
-O agente perde pontos toda vez que:
+<strong>O agente perde pontos toda vez que:</strong>
 1. Atravessar uma parede.
 2. Transicionar a uma posição inválida.
 3. Dar voltas no mapa (repetir posições na rota).
@@ -16,9 +16,9 @@ O agente perde pontos toda vez que:
 
 <h4>Recompensas</h4>
 
-Utilizamos o conceito de <strong>Cookies</strong> para ajustar a solução ótima, pois identificamos que apenas com as penalizações, o agente encontrava poucas vezes a solução ótima.
+Utilizamos o conceito de <strong>Cookies</strong> para ajustar a solução ótima, pois identificamos que apenas com as penalizações, o agente encontrava poucas vezes a solução ótima.</br>
 
-O agente ganha pontos toda vez que:
+<strong>O agente ganha pontos toda vez que:</strong>
 1. Passa por posiçoes específicas.
 2. Chega na posição final ótima (saída do labrinto).
 
